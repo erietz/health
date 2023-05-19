@@ -1,4 +1,4 @@
-The server in my closes sometimes goes off the rails. I'd like a cronjob to
+The server in my closet sometimes goes off the rails. I'd like a cronjob to
 email me once a day with a health check to ensure things are running smoothly.
 
 I want something like this
