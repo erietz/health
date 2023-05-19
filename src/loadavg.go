@@ -76,12 +76,12 @@ func GetLoadAvg() LoadAvg {
 	}
 
 	loadAvg := LoadAvg{
-		Avg1: float32(la1),
-		Avg5: float32(la5),
-		Avg15: float32(la15),
+		Avg1:             float32(la1),
+		Avg5:             float32(la5),
+		Avg15:            float32(la15),
 		RunningProcesses: int32(runningProcesses),
-		TotalProcesses: int32(totalProcesses),
-		LastPID: int32(lastPID),
+		TotalProcesses:   int32(totalProcesses),
+		LastPID:          int32(lastPID),
 	}
 
 	return loadAvg

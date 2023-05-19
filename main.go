@@ -7,7 +7,7 @@ import (
 
 func main() {
 	numProcessors := health.GetProcessors()
-	numProcesses := health.GetLoadAvg()
+	loadAverage := health.GetLoadAvg()
 	fmt.Println(numProcessors)
-	fmt.Println(numProcesses)
+	fmt.Println(loadAverage)
 }
