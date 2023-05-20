@@ -32,8 +32,7 @@ func GetLoadAvg() LoadAvg {
 		log.Fatal(err)
 	}
 
-	s := string(file)
-	s = strings.Trim(string(file), "\n")
+	s := strings.Trim(string(file), "\n")
 	parts := strings.Fields(s)
 
 	if len(parts) != 5 {

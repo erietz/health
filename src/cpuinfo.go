@@ -16,7 +16,6 @@ func GetProcessors() int {
 	defer file.Close()
 
 	numProcessors := 0
-
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		if strings.HasPrefix(scanner.Text(), "processor") {
