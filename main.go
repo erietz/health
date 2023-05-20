@@ -9,7 +9,6 @@ import (
 	"github.com/erietz/health/src"
 )
 
-
 var toJSON bool
 var toHTML bool
 
@@ -23,7 +22,7 @@ func main() {
 
 	stats := health.GetAllStats()
 	data := health.EmailData{
-		Title:  "System information as of " + time.Now().Format("2006-01-02 15:04:05"),
+		Title:      "System information as of " + time.Now().Format("2006-01-02 15:04:05"),
 		LoadAvg:    stats.LoadAvg,
 		Processors: stats.Processors,
 	}
