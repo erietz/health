@@ -1,0 +1,34 @@
+<body>
+
+  <h1>{{ .PageTitle }}</h1>
+
+  <h2>Load Average</h2>
+  <dl>
+
+    <dt>Avg 1 min</dt>
+    <dd>{{ .LoadAvg.Avg1 }}</dd>
+
+    <dt>Avg 5 min</dt>
+    <dd>{{ .LoadAvg.Avg5 }}</dd>
+
+    <dt>Avg 15 min</dt>
+    <dd>{{ .LoadAvg.Avg15 }}</dd>
+
+    <dt>Running Processes</dt>
+    <dd>{{ .LoadAvg.RunningProcesses }}</dd>
+
+    <dt>Total Processes</dt>
+    <dd>{{ .LoadAvg.TotalProcesses }}</dd>
+
+    <dt>Last PID</dt>
+    <dd>{{ .LoadAvg.LastPID }}</dd>
+
+
+    <dt>Number of Processors</dt>
+    <dd>{{ .Processors }}</dd>
+
+  </dl>
+
+
+
+</body>
