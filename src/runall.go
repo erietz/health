@@ -13,19 +13,18 @@ type Stats struct {
 // Gets all statistics concurrently
 func GetAllStats() Stats {
 	stats := Stats{}
-
 	wg := sync.WaitGroup{}
 
 	wg.Add(1)
 	go func() {
-		defer wg.Done()
 		stats.LoadAvg = proc.GetLoadAvg()
+		wg.Done()
 	}()
 
 	wg.Add(1)
 	go func() {
-		defer wg.Done()
 		stats.Processors = proc.GetCPUinfo()
+		wg.Done()
 	}()
 
 	wg.Wait()
