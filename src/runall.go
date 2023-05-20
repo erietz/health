@@ -14,7 +14,7 @@ type Stats struct {
 func GetAllStats() Stats {
 	stats := Stats{}
 
-	wg := new(sync.WaitGroup)
+	wg := sync.WaitGroup{}
 
 	wg.Add(1)
 	go func() {
