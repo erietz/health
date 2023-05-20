@@ -5,9 +5,13 @@ import (
 	"log"
 	"os"
 	"time"
+	_ "embed"
 
 	"github.com/erietz/health/src"
 )
+
+//go:embed views/email.html
+var emailTemplate string
 
 type EmailData struct {
 	PageTitle  string
@@ -16,7 +20,7 @@ type EmailData struct {
 }
 
 func main() {
-	tmpl := template.Must(template.ParseFiles("views/email.gohtml"))
+	tmpl := template.Must(template.New("foo").Parse(emailTemplate))
 	data := EmailData{
 		PageTitle:  "System information as of " + time.Now().Format("2006-01-02 15:04:05"),
 		LoadAvg:    health.GetLoadAvg(),
