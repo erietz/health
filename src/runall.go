@@ -25,7 +25,7 @@ func GetAllStats() Stats {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		stats.Processors = proc.GetProcessors()
+		stats.Processors = proc.GetCPUinfo()
 	}()
 
 	wg.Wait()

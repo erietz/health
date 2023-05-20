@@ -8,7 +8,7 @@ import (
 )
 
 // Returns the number of processors found in /proc/cpuinfo.
-func GetProcessors() int {
+func GetCPUinfo() int {
 	file, err := os.Open("/proc/cpuinfo")
 	if err != nil {
 		log.Fatal(err)
