@@ -1,13 +1,13 @@
 package main
 
 import (
+	"bytes"
 	_ "embed"
 	"encoding/json"
 	"flag"
 	"fmt"
 	"html/template"
 	"log"
-	"os"
 	"time"
 
 	"github.com/erietz/health/src"
@@ -20,6 +20,23 @@ type EmailData struct {
 	Title  string
 	LoadAvg    health.LoadAvg
 	Processors int
+}
+
+func (d EmailData) ToJSON() string {
+	b, err := json.MarshalIndent(d, "", "    ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	return string(b)
+}
+
+func (d EmailData) ToHTML() string {
+	tmpl := template.Must(template.New("email").Parse(emailTemplate))
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, d); err != nil {
+		log.Fatal(err)
+	}
+	return buf.String()
 }
 
 var toJSON bool
@@ -41,16 +58,9 @@ func main() {
 	}
 
 	if toJSON {
-		b, err := json.MarshalIndent(data, "", "    ")
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println(string(b))
+		fmt.Println(data.ToJSON())
 	} else if toHTML {
-		tmpl := template.Must(template.New("email").Parse(emailTemplate))
-		if err := tmpl.Execute(os.Stdout, data); err != nil {
-			log.Fatal(err)
-		}
+		fmt.Println(data.ToHTML())
 	} else {
 		fmt.Println("TODO: print a nice text cli format")
 	}
