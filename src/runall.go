@@ -1,11 +1,12 @@
 package health
 
 import (
+	"github.com/erietz/health/src/proc"
 	"sync"
 )
 
 type Stats struct {
-	LoadAvg    LoadAvg
+	LoadAvg    proc.LoadAvg
 	Processors int
 }
 
@@ -18,13 +19,13 @@ func GetAllStats() Stats {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		stats.LoadAvg = GetLoadAvg()
+		stats.LoadAvg = proc.GetLoadAvg()
 	}()
 
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		stats.Processors = GetProcessors()
+		stats.Processors = proc.GetProcessors()
 	}()
 
 	wg.Wait()
