@@ -15,12 +15,12 @@ import (
 // number of processes. The last column displays the last
 // process ID used.
 type LoadAvg struct {
-	Avg1             float32
-	Avg5             float32
-	Avg15            float32
-	RunningProcesses int32
-	TotalProcesses   int32
-	LastPID          int32
+	Avg1             float32 `json:"avg1"`
+	Avg5             float32 `json:"avg5"`
+	Avg15            float32 `json:"avg15"`
+	RunningProcesses int32   `json:"runningProcesses"`
+	TotalProcesses   int32   `json:"totalProcesses"`
+	LastPID          int32   `json:"lastPID"`
 }
 
 // Return the number of processes in the system run queue

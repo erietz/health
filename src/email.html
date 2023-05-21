@@ -6,50 +6,56 @@
     <h1>{{ .Title }}</h1>
      
     <table>
-      <thead>Miscellaneous</thead>
       <tr>
+        <th>Category</th>
         <th>Property</th>
         <th>Value</th>
       </tr>
+
       <tr>
+        <td>Miscellaneous</td>
         <td>Number of Processors</td>
         <td>{{ .Processors }}</td>
       </tr>
 
-    </table>
-
-    <table>
-      <thead>Load Average</thead>
       <tr>
-        <th>Property</th>
-        <th>Value</th>
+        <td></td>
+        <td>Temperature</td>
+        <td>{{ .Temperature }}C</td>
       </tr>
+
       <tr>
+        <td>Load Average</td>
         <td>Avg (1 min)</td>
         <td>{{ .LoadAvg.Avg1 }}</td>
       </tr>
 
       <tr>
+        <td></td>
         <td>Avg (5 min)</td>
         <td>{{ .LoadAvg.Avg5 }}</td>
       </tr>
 
       <tr>
+        <td></td>
         <td>Avg (15 min)</td>
         <td>{{ .LoadAvg.Avg15 }}</td>
       </tr>
 
       <tr>
+        <td></td>
         <td>Running Processes</td>
         <td>{{ .LoadAvg.RunningProcesses }}</td>
       </tr>
 
       <tr>
+        <td></td>
         <td>Total Processes</td>
         <td>{{ .LoadAvg.TotalProcesses }}</td>
       </tr>
 
       <tr>
+        <td></td>
         <td>Last PID</td>
         <td>{{ .LoadAvg.LastPID }}</td>
       </tr>

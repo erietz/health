@@ -14,9 +14,10 @@ import (
 var emailTemplate string
 
 type EmailData struct {
-	Title      string
-	LoadAvg    proc.LoadAvg
-	Processors int
+	Title       string       `json:"title"`
+	LoadAvg     proc.LoadAvg `json:"loadAvg"`
+	Processors  int          `json:"processors"`
+	Temperature float32      `json:"temperature"`
 }
 
 func (d EmailData) ToJSON() string {
