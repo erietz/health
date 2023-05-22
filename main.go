@@ -40,7 +40,7 @@ func main() {
 	} else if toHTML {
 		fmt.Println(data.ToHTML())
 	} else {
-		fmt.Println("TODO: print a nice text cli format")
+		fmt.Println(data)
 	}
 
 }
