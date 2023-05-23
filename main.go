@@ -33,6 +33,7 @@ func main() {
 		LoadAvg:     stats.LoadAvg,
 		Processors:  stats.Processors,
 		Temperature: stats.Temperature,
+		Users:       stats.Users,
 	}
 
 	if toJSON {

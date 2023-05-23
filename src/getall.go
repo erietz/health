@@ -2,6 +2,7 @@ package health
 
 import (
 	"github.com/erietz/health/src/proc"
+	"github.com/erietz/health/src/subprocess"
 	"github.com/erietz/health/src/sys"
 	"sync"
 )
@@ -10,6 +11,7 @@ type Stats struct {
 	LoadAvg     proc.LoadAvg
 	Processors  int
 	Temperature float32
+	Users       int
 }
 
 // Gets all statistics concurrently
@@ -35,6 +37,12 @@ func GetAllStats() Stats {
 		wg.Done()
 	}()
 
+	wg.Add(1)
+	go func() {
+		stats.Users = subprocess.GetUsersLoggedIn()
+		wg.Done()
+	}()
+
 	wg.Wait()
 
 	return stats
@@ -46,6 +54,7 @@ func GetAllStatsSync() Stats {
 		LoadAvg:     proc.GetLoadAvg(),
 		Processors:  proc.GetCPUinfo(),
 		Temperature: sys.GetTemperature(),
+		Users:       subprocess.GetUsersLoggedIn(),
 	}
 
 }

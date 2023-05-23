@@ -1,10 +1,10 @@
 package health
 
 import (
-	"fmt"
 	"bytes"
 	_ "embed"
 	"encoding/json"
+	"fmt"
 	"html/template"
 	"log"
 
@@ -19,6 +19,7 @@ type EmailData struct {
 	LoadAvg     proc.LoadAvg `json:"loadAvg"`
 	Processors  int          `json:"processors"`
 	Temperature float32      `json:"temperature"`
+	Users       int          `json:"users"`
 }
 
 func (d EmailData) String() string {
@@ -32,7 +33,8 @@ func (d EmailData) String() string {
 	s += fmt.Sprintf("  %-20v %v\n", "15 Min:", d.LoadAvg.Avg15)
 	s += fmt.Sprintf("  %-20v %v\n", "Running Processes:", d.LoadAvg.RunningProcesses)
 	s += fmt.Sprintf("  %-20v %v\n", "Total Processes:", d.LoadAvg.TotalProcesses)
-	s += fmt.Sprintf("  %-20v %v\n", "Last PID::", d.LoadAvg.LastPID)
+	s += fmt.Sprintf("  %-20v %v\n", "Last PID:", d.LoadAvg.LastPID)
+	s += fmt.Sprintf("%-22v %v\n", "Users Logged In:", d.Users)
 
 	return s
 }
