@@ -34,6 +34,7 @@ func main() {
 		Processors:  stats.Processors,
 		Temperature: stats.Temperature,
 		Users:       stats.Users,
+		DiskUsage:   stats.DiskUsage,
 	}
 
 	if toJSON {

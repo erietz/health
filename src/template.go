@@ -20,6 +20,7 @@ type EmailData struct {
 	Processors  int          `json:"processors"`
 	Temperature float32      `json:"temperature"`
 	Users       int          `json:"users"`
+	DiskUsage   string       `json:"diskUsage"`
 }
 
 func (d EmailData) String() string {
@@ -35,6 +36,7 @@ func (d EmailData) String() string {
 	s += fmt.Sprintf("  %-20v %v\n", "Total Processes:", d.LoadAvg.TotalProcesses)
 	s += fmt.Sprintf("  %-20v %v\n", "Last PID:", d.LoadAvg.LastPID)
 	s += fmt.Sprintf("%-22v %v\n", "Users Logged In:", d.Users)
+	s += fmt.Sprintf("%-22v %v\n", "Disk Usage:", d.DiskUsage)
 
 	return s
 }

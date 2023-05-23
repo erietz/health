@@ -12,6 +12,7 @@ type Stats struct {
 	Processors  int
 	Temperature float32
 	Users       int
+	DiskUsage   string
 }
 
 // Gets all statistics concurrently
@@ -43,6 +44,12 @@ func GetAllStats() Stats {
 		wg.Done()
 	}()
 
+	wg.Add(1)
+	go func() {
+		stats.DiskUsage = subprocess.GetDiskUsage()
+		wg.Done()
+	}()
+
 	wg.Wait()
 
 	return stats
@@ -55,6 +62,7 @@ func GetAllStatsSync() Stats {
 		Processors:  proc.GetCPUinfo(),
 		Temperature: sys.GetTemperature(),
 		Users:       subprocess.GetUsersLoggedIn(),
+		DiskUsage:   subprocess.GetDiskUsage(),
 	}
 
 }
