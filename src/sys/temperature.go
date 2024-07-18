@@ -1,8 +1,8 @@
 package sys
 
 import (
-	"io/ioutil"
 	"log"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -11,9 +11,10 @@ import (
 
 // Returns degrees Celsius in /sys/class/thermal/thermal_zone0/temp
 func GetTemperature() float32 {
-	file, err := ioutil.ReadFile("/sys/class/thermal/thermal_zone0/temp")
+	file, err := os.ReadFile("/sys/class/thermal/thermal_zone0/temp")
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
+		return 0;
 	}
 
 	s := strings.Trim(string(file), "\n")

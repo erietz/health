@@ -1,8 +1,8 @@
 package proc
 
 import (
-	"io/ioutil"
 	"log"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -27,7 +27,7 @@ type LoadAvg struct {
 // averaged over the last 1, 5, and 15 minutes. From
 // /proc/cpuinfo
 func GetLoadAvg() LoadAvg {
-	file, err := ioutil.ReadFile("/proc/loadavg")
+	file, err := os.ReadFile("/proc/loadavg")
 	if err != nil {
 		log.Fatal(err)
 	}
